@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Jared Ku</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Jared Ku</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../projects/index.html">Projects</a></li>
+      <li><a href="index.html" class="active">About</a></li>
+      <li><a href="../contact/index.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="page-hero">
+    <h1>About Me</h1>
+  </div>
+
+  <div class="about-grid">
+
+    <div class="about-text fade-up">
+      <h2>Hi, I'm Jared.</h2>
+      <p>
+        I'm a sophomore at UConn studying Mechanical Engineering. Growing up, I spent a lot of
+        time with my dad and grandfather, who always seemed to be in the middle of a project —
+        either building something from scratch or figuring out how to fix anything that broke.
+        That hands-on curiosity stuck with me, and it's why I'm pursuing a degree in mechanical
+        engineering.
+      </p>
+      <p>
+        Over this past summer, I undertook a robotic arm project to explore my interest in
+        robotics, gain experience in electronics and programming, and develop skills such as
+        CAD modeling, 3D printing, and GD&T.
+      </p>
+      <p>
+        While working on this project, I worked as a Park Ranger with the CT Department of
+        Energy & Environmental Protection. That experience was great for improving my people
+        skills, learning how to manage public interactions, and contributing to the maintenance
+        of the park's grounds.
+      </p>
+      <p>
+        I'm eager to combine these diverse experiences to make a meaningful impact as a
+        Mechanical Engineer.
+      </p>
+      <br/>
+      <a href="../contact/index.html" class="btn btn-primary">Get in Touch</a>
+    </div>
+
+    <div class="fade-up">
+      <img
+        src="https://static.wixstatic.com/media/7ddc47_9eff4ed1a9624fec92a339e24051bcc8~mv2.jpg/v1/crop/x_0,y_256,w_1536,h_1536/fill/w_262,h_262,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/portrait.jpg"
+        alt="Jared Ku"
+        class="about-photo"
+      />
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Jared Ku · Mechanical Engineering Student, University of Connecticut</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

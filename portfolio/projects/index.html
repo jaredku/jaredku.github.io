@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Jared Ku</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .project-card { cursor: pointer; }
+
+    .card-hint {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 12px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .project-card:hover .card-hint { opacity: 1; }
+
+    /* OVERLAY */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* MODAL BOX */
+    .modal-wrapper { position: relative; max-width: 680px; width: 100%; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 10px;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.25s ease;
+    }
+    .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+    .modal-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+      display: block;
+    }
+
+    .modal-body { padding: 28px 32px 36px; }
+
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .modal-tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .modal-body h2 {
+      font-family: var(--serif);
+      font-size: 30px;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+
+    .modal-body p {
+      color: var(--mid);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .modal-details {
+      margin-top: 20px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-detail-row { display: flex; gap: 12px; font-size: 13px; }
+    .modal-detail-label { font-weight: 700; color: var(--dark); min-width: 80px; }
+    .modal-detail-val { color: var(--mid); }
+
+    .modal-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--dark);
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      z-index: 10;
+    }
+    .modal-close:hover { background: var(--bg); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Jared Ku</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="index.html" class="active">Projects</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../contact/index.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="page-hero">
+    <h1>Projects</h1>
+    <p>A selection of engineering work spanning CAD, robotics, and fabrication. Click any card to learn more.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card fade-up" onclick="openModal('cad')">
+      <img src="https://static.wixstatic.com/media/7ddc47_b4aa54bfc27e4115a41ed57d2002e149~mv2.png/v1/crop/x_157,y_0,w_682,h_682/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="CAD Gallery" class="project-img" />
+      <div class="project-body">
+        <h3>CAD Gallery</h3>
+        <p>Explore a selection of my CAD designs created in OnShape and SolidWorks.</p>
+        <div class="card-hint">Learn more →</div>
+      </div>
+    </div>
+
+    <div class="project-card fade-up" onclick="openModal('arm')">
+      <img src="https://static.wixstatic.com/media/7ddc47_a0b262a95ca3408aa5bb52316d570a32~mv2.png/v1/crop/x_0,y_16,w_676,h_676/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="Robot Arm" class="project-img" />
+      <div class="project-body">
+        <h3>Robot Arm</h3>
+        <p>My Summer 2025 project: designed and built a robotic arm from scratch.</p>
+        <div class="card-hint">Learn more →</div>
+      </div>
+    </div>
+
+    <div class="project-card fade-up" onclick="openModal('turbine')">
+      <img src="https://static.wixstatic.com/media/7ddc47_1e5b961a752f446eac04a26a0ae1c03f~mv2.png/v1/crop/x_3,y_0,w_496,h_496/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/windturbine_edited.png" alt="Wind Turbine" class="project-img" />
+      <div class="project-body">
+        <h3>Wind Turbine</h3>
+        <p>Wind turbine project for an engineering class.</p>
+        <div class="card-hint">Learn more →</div>
+      </div>
+    </div>
+
+    <div class="project-card fade-up" onclick="openModal('drone')">
+      <img src="https://static.wixstatic.com/media/7ddc47_d896a84204da4933afd29eca02464f56~mv2.jpg/v1/crop/x_0,y_201,w_2250,h_2250/fill/w_365,h_365,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5156_edited_edited.jpg" alt="Drone" class="project-img" />
+      <div class="project-body">
+        <h3>Drone Building</h3>
+        <p>High school capstone: designed, built, and flew a custom 3D-printed drone.</p>
+        <div class="card-hint">Learn more →</div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- MODAL: CAD -->
+<div class="modal-overlay" id="modal-cad" onclick="closeOnOverlay(event,'cad')">
+  <div class="modal-wrapper">
+    <button class="modal-close" onclick="closeModal('cad')">✕</button>
+    <div class="modal">
+      <img src="https://static.wixstatic.com/media/7ddc47_b4aa54bfc27e4115a41ed57d2002e149~mv2.png/v1/crop/x_157,y_0,w_682,h_682/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="CAD Gallery" class="modal-img" />
+      <div class="modal-body">
+        <div class="modal-tags">
+          <span class="modal-tag">OnShape</span><span class="modal-tag">SolidWorks</span><span class="modal-tag">GD&T</span>
+        </div>
+        <h2>CAD Gallery</h2>
+        <p>A collection of 3D models and technical drawings created throughout my coursework and personal projects using OnShape and SolidWorks.</p>
+        <p>These designs demonstrate my ability to translate engineering requirements into precise, manufacturable geometry — including proper tolerancing, mate constraints, and assembly modeling.</p>
+        <div class="modal-details">
+          <div class="modal-detail-row"><span class="modal-detail-label">Tools</span><span class="modal-detail-val">OnShape, SolidWorks</span></div>
+          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Part modeling, assemblies, technical drawings, GD&T</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Robot Arm -->
+<div class="modal-overlay" id="modal-arm" onclick="closeOnOverlay(event,'arm')">
+  <div class="modal-wrapper">
+    <button class="modal-close" onclick="closeModal('arm')">✕</button>
+    <div class="modal">
+      <img src="https://static.wixstatic.com/media/7ddc47_a0b262a95ca3408aa5bb52316d570a32~mv2.png/v1/crop/x_0,y_16,w_676,h_676/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="Robot Arm" class="modal-img" />
+      <div class="modal-body">
+        <div class="modal-tags">
+          <span class="modal-tag">Robotics</span><span class="modal-tag">3D Printing</span><span class="modal-tag">C++</span><span class="modal-tag">Electronics</span>
+        </div>
+        <h2>Robot Arm</h2>
+        <p>My Summer 2025 independent project — I designed and built a robotic arm from scratch to deepen my understanding of robotics, electronics, and software-hardware integration.</p>
+        <p>The arm was fully CAD-modeled before fabrication, with 3D-printed structural components. I programmed joint control logic in C++ and worked through iterative design cycles to improve range of motion and repeatability.</p>
+        <p>This project gave me hands-on experience with servo motor selection, wiring harnesses, GD&T applied to printed parts, and debugging embedded code on real hardware.</p>
+        <div class="modal-details">
+          <div class="modal-detail-row"><span class="modal-detail-label">Timeline</span><span class="modal-detail-val">Summer 2025</span></div>
+          <div class="modal-detail-row"><span class="modal-detail-label">Tools</span><span class="modal-detail-val">OnShape, 3D Printer, Arduino, C++</span></div>
+          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Mechanical design, fabrication, embedded programming, GD&T</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Wind Turbine -->
+<div class="modal-overlay" id="modal-turbine" onclick="closeOnOverlay(event,'turbine')">
+  <div class="modal-wrapper">
+    <button class="modal-close" onclick="closeModal('turbine')">✕</button>
+    <div class="modal">
+      <img src="https://static.wixstatic.com/media/7ddc47_1e5b961a752f446eac04a26a0ae1c03f~mv2.png/v1/crop/x_3,y_0,w_496,h_496/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/windturbine_edited.png" alt="Wind Turbine" class="modal-img" />
+      <div class="modal-body">
+        <div class="modal-tags">
+          <span class="modal-tag">Fluid Mechanics</span><span class="modal-tag">CAD</span><span class="modal-tag">3D Printing</span>
+        </div>
+        <h2>Wind Turbine</h2>
+        <p>An engineering class project focused on designing and building a small-scale wind turbine optimized for power output.</p>
+        <p>The project covered blade geometry and aerodynamic profiling, rotor assembly, and testing under controlled airflow conditions. I applied principles from fluid mechanics to iterate on blade design and maximize efficiency.</p>
+        <div class="modal-details">
+          <div class="modal-detail-row"><span class="modal-detail-label">Context</span><span class="modal-detail-val">Engineering coursework, UConn</span></div>
+          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Aerodynamic design, CAD modeling, fabrication, testing</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Drone -->
+<div class="modal-overlay" id="modal-drone" onclick="closeOnOverlay(event,'drone')">
+  <div class="modal-wrapper">
+    <button class="modal-close" onclick="closeModal('drone')">✕</button>
+    <div class="modal">
+      <img src="https://static.wixstatic.com/media/7ddc47_d896a84204da4933afd29eca02464f56~mv2.jpg/v1/crop/x_0,y_201,w_2250,h_2250/fill/w_365,h_365,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5156_edited_edited.jpg" alt="Drone" class="modal-img" />
+      <div class="modal-body">
+        <div class="modal-tags">
+          <span class="modal-tag">UAV</span><span class="modal-tag">3D Printing</span><span class="modal-tag">Electronics</span><span class="modal-tag">Flight Systems</span>
+        </div>
+        <h2>Drone Building</h2>
+        <p>My high school senior capstone project: I designed, fabricated, and successfully flew a custom 3D-printed drone entirely from scratch.</p>
+        <p>The frame was modeled in CAD and printed in PLA, with careful attention to weight distribution and motor mount geometry. I sourced and integrated the flight controller, ESCs, motors, and receiver, then tuned PID parameters for stable flight.</p>
+        <p>This was my first end-to-end hardware project and the experience that pushed me toward mechanical engineering.</p>
+        <div class="modal-details">
+          <div class="modal-detail-row"><span class="modal-detail-label">Context</span><span class="modal-detail-val">Senior capstone, Newtown High School</span></div>
+          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Airframe design, 3D printing, electronics integration, PID tuning</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Jared Ku · Mechanical Engineering Student, University of Connecticut</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeOnOverlay(event, id) {
+    if (event.target === document.getElementById('modal-' + id)) closeModal(id);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
