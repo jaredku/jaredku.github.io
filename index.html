@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jar — Mechanical Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0e0f;
+      --surface:  #141618;
+      --border:   #2a2d31;
+      --accent:   #c8a96e;
+      --accent2:  #5d8fad;
+      --text:     #e8e6e1;
+      --muted:    #6b6f75;
+      --mono:     'IBM Plex Mono', monospace;
+      --serif:    'DM Serif Display', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Blueprint grid overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Noise grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(13,14,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent2);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-top: 28px;
+      margin-bottom: 48px;
+      line-height: 1.9;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d0e0f;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* corner decoration */
+    .corner-mark {
+      position: absolute;
+      bottom: 60px;
+      right: 48px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      opacity: 0.5;
+    }
+
+    /* ─── SECTIONS SHARED ─── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 48px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      border-top: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-grid h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .about-grid h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .about-grid p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .skills-block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .skill-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .skill-bar {
+      height: 2px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .skill-fill.animated { transform: scaleX(1); }
+
+    /* ─── PROJECTS ─── */
+    #projects {
+      border-top: 1px solid var(--border);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .project-card {
+      background: var(--bg);
+      padding: 36px;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project-card:hover { background: var(--surface); }
+    .project-card:hover::before { transform: scaleY(1); }
+
+    .project-num {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+    }
+
+    .project-card h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .project-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      padding: 3px 10px;
+      opacity: 0.7;
+    }
+
+    /* ─── EXPERIENCE ─── */
+    #experience {
+      border-top: 1px solid var(--border);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 1px solid var(--border);
+      margin-left: 8px;
+      padding-left: 40px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 48px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -45px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--accent);
+      background: var(--bg);
+      transform: rotate(45deg);
+    }
+
+    .timeline-date {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .timeline-org {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-item p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 600px;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 64px);
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    #contact h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    #contact p {
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-size: 13px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    .contact-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-link:hover { color: var(--accent); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* stagger delays */
+    .fade-up:nth-child(1) { transition-delay: 0.05s; }
+    .fade-up:nth-child(2) { transition-delay: 0.12s; }
+    .fade-up:nth-child(3) { transition-delay: 0.19s; }
+    .fade-up:nth-child(4) { transition-delay: 0.26s; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { gap: 20px; }
+      #hero, section { padding-left: 24px; padding-right: 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Jar.</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-tag">Mechanical Engineer · Robotics · Aerospace</div>
+    <h1>Building things<br/>that <em>move.</em></h1>
+    <p class="hero-sub">
+      I'm a mechanical engineering student focused on robotics, autonomous systems, and hardware
+      that operates in challenging environments. Currently designing for MATE ROV 2026 and targeting
+      aerospace hardware roles.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+    <div class="corner-mark">Portfolio · 2026</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">01 — About</div>
+    <div class="about-grid">
+      <div class="fade-up">
+        <h2>Engineer.<br/><em>Builder.</em><br/>Tinkerer.</h2>
+        <p>
+          I'm drawn to problems that sit at the intersection of mechanical systems and
+          intelligent motion — where design constraints are physical and the margin for
+          error is thin.
+        </p>
+        <p>
+          My work spans ROV subsystem design, control theory, and CAD-driven prototyping.
+          Long-term, I'm working toward hardware engineering at companies pushing the limits
+          of autonomous systems in aerospace and logistics.
+        </p>
+      </div>
+      <div class="skills-block fade-up">
+        <div class="skill-row">
+          <div class="skill-label"><span>SolidWorks / CAD</span><span>Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.88"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Control Systems</span><span>Proficient</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.78"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Mechanical Design</span><span>Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.85"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Python / MATLAB</span><span>Proficient</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.72"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>Arduino / Embedded</span><span>Intermediate</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.60"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label"><span>FEA / Simulation</span><span>Developing</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="0.50"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">02 — Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-num">001</div>
+        <h3>MATE ROV 2026</h3>
+        <p>
+          Designing mechanical subsystems for a competition underwater ROV — including a
+          front-mounted manipulator arm, a balanced 4-cell collection tray with quick-release
+          mount, and a D-clip/tether mechanism for anchor retrieval tasks.
+        </p>
+        <div class="tags">
+          <span class="tag">SolidWorks</span>
+          <span class="tag">Mechanical Design</span>
+          <span class="tag">Robotics</span>
+          <span class="tag">Underwater Systems</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-num">002</div>
+        <h3>LTI Systems Analysis</h3>
+        <p>
+          Modeled linear time-invariant systems using Laplace transforms, partial fraction
+          decomposition, and transfer function analysis. Characterized system behavior via
+          poles, DC gain, and impulse/step responses.
+        </p>
+        <div class="tags">
+          <span class="tag">Control Theory</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">Signal Processing</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-num">003</div>
+        <h3>Add Your Project</h3>
+        <p>
+          Describe a hardware build, CAD model, Arduino project, or any hands-on engineering
+          work here. Physical builds and self-initiated projects stand out most to employers
+          in aerospace and robotics.
+        </p>
+        <div class="tags">
+          <span class="tag">Your Skill</span>
+          <span class="tag">Your Tool</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-num">004</div>
+        <h3>Add Your Project</h3>
+        <p>
+          Another project slot. Consider adding a fixed-wing UAV build, a thrust stand,
+          a mechatronics project, or something that shows your range as an engineer.
+        </p>
+        <div class="tags">
+          <span class="tag">Your Skill</span>
+          <span class="tag">Your Tool</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">03 — Experience</div>
+    <div class="timeline">
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-date">2025 — Present</div>
+        <h3>MATE ROV Team</h3>
+        <div class="timeline-org">Mechanical Design Lead · University Team</div>
+        <p>
+          Leading mechanical subsystem design for the MATE ROV 2026 international competition.
+          Responsible for manipulator arm, payload collection systems, and tether retrieval mechanisms.
+        </p>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-date">2024 — Present</div>
+        <h3>B.S. Mechanical Engineering</h3>
+        <div class="timeline-org">Your University · Expected 20XX</div>
+        <p>
+          Coursework in control systems, linear algebra, ODEs, dynamics, and engineering design.
+          Focus on autonomous and hardware systems.
+        </p>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-date">Add Role</div>
+        <h3>Your Role Title</h3>
+        <div class="timeline-org">Organization · Duration</div>
+        <p>
+          Add internships, research positions, club leadership, or relevant work experience here.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">04 — Contact</div>
+    <h2>Let's build<br/><em>something.</em></h2>
+    <p>Open to internship opportunities in aerospace, robotics, and hardware engineering.</p>
+    <a href="mailto:your@email.com" class="btn btn-primary">your@email.com</a>
+    <div class="contact-links">
+      <a href="https://github.com/yourusername" class="contact-link" target="_blank">
+        ↗ GitHub
+      </a>
+      <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">
+        ↗ LinkedIn
+      </a>
+      <a href="resume.pdf" class="contact-link" target="_blank">
+        ↗ Resume
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>Jar · Mechanical Engineer</span>
+    <span>Built with HTML · Hosted on GitHub Pages</span>
+    <span>© 2026</span>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Intersection Observer for fade-up animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Skill bar animation
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+            const w = parseFloat(bar.dataset.width);
+            bar.style.transform = `scaleX(${w})`;
+            bar.classList.add('animated');
+          });
+          skillObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.skills-block').forEach(el => skillObserver.observe(el));
+  </script>
+
+</body>
+</html>
