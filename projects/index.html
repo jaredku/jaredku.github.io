@@ -210,25 +210,81 @@
   </div>
 </div>
 
+
 <!-- MODAL: Robot Arm -->
 <div class="modal-overlay" id="modal-arm" onclick="closeOnOverlay(event,'arm')">
   <div class="modal-wrapper">
     <button class="modal-close" onclick="closeModal('arm')">✕</button>
     <div class="modal">
-      <img src="images/your-image-filename.jpg" alt="Robot Arm" class="modal-img" />
+
+      <!-- HERO IMAGE -->
+      <img src="" alt="Robot Arm Hero" class="modal-img" />
+
       <div class="modal-body">
+
+        <!-- TAGS -->
         <div class="modal-tags">
-          <span class="modal-tag">Robotics</span><span class="modal-tag">3D Printing</span><span class="modal-tag">C++</span><span class="modal-tag">Electronics</span>
+          <span class="modal-tag">Robotics</span>
+          <span class="modal-tag">OnShape</span>
+          <span class="modal-tag">Arduino</span>
+          <span class="modal-tag">C++</span>
+          <span class="modal-tag">3D Printing</span>
+          <span class="modal-tag">Inverse Kinematics</span>
+          <span class="modal-tag">GD&T</span>
         </div>
+
+        <!-- TITLE + OVERVIEW -->
         <h2>Robot Arm</h2>
-        <p>My Summer 2025 independent project — I designed and built a robotic arm from scratch to deepen my understanding of robotics, electronics, and software-hardware integration.</p>
-        <p>The arm was fully CAD-modeled before fabrication, with 3D-printed structural components. I programmed joint control logic in C++ and worked through iterative design cycles to improve range of motion and repeatability.</p>
-        <p>This project gave me hands-on experience with servo motor selection, wiring harnesses, GD&T applied to printed parts, and debugging embedded code on real hardware.</p>
+        <p><!-- Write a 2-3 sentence overview of the project here --></p>
+
+        <!-- SECTION 1 -->
+        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+          <h4 style="font-size:14px; font-weight:700; color:var(--dark); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Design & CAD</h4>
+          <p style="color:var(--mid); font-size:14px; line-height:1.8;"><!-- Describe your CAD process, software used, any design decisions --></p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
+            <img src="" alt="CAD screenshot" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+            <img src="" alt="CAD detail" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+          <h4 style="font-size:14px; font-weight:700; color:var(--dark); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Fabrication & Assembly</h4>
+          <p style="color:var(--mid); font-size:14px; line-height:1.8;"><!-- Describe 3D printing process, assembly, any challenges --></p>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:14px;">
+            <img src="" alt="Print 1" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+            <img src="" alt="Print 2" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+            <img src="" alt="Assembly" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+          </div>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+          <h4 style="font-size:14px; font-weight:700; color:var(--dark); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Programming & Controls</h4>
+          <p style="color:var(--mid); font-size:14px; line-height:1.8;"><!-- Describe Arduino code, inverse kinematics, any challenges --></p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
+            <img src="" alt="Electronics" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+            <img src="" alt="Wiring" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+          </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+          <h4 style="font-size:14px; font-weight:700; color:var(--dark); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Results & Takeaways</h4>
+          <p style="color:var(--mid); font-size:14px; line-height:1.8;"><!-- What worked, what you'd do differently, what you learned --></p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
+            <img src="" alt="Final result 1" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+            <img src="" alt="Final result 2" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
+          </div>
+        </div>
+
+        <!-- PROJECT DETAILS -->
         <div class="modal-details">
           <div class="modal-detail-row"><span class="modal-detail-label">Timeline</span><span class="modal-detail-val">Summer 2025</span></div>
-          <div class="modal-detail-row"><span class="modal-detail-label">Tools</span><span class="modal-detail-val">OnShape, 3D Printer, Arduino, C++</span></div>
-          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Mechanical design, fabrication, embedded programming, GD&T</span></div>
+          <div class="modal-detail-row"><span class="modal-detail-label">Tools</span><span class="modal-detail-val">OnShape, Arduino, 3D Printer, C++</span></div>
+          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Mechanical design, fabrication, embedded programming, GD&T, Inverse Kinematics</span></div>
         </div>
+
       </div>
     </div>
   </div>
