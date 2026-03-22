@@ -149,14 +149,14 @@
 
   <div class="projects-grid">
 
-    <div class="project-card fade-up" onclick="openModal('cad')">
+    <a href="robot-arm.html" class="project-card fade-up">
       <img src="https://static.wixstatic.com/media/7ddc47_b4aa54bfc27e4115a41ed57d2002e149~mv2.png/v1/crop/x_157,y_0,w_682,h_682/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="CAD Gallery" class="project-img" />
       <div class="project-body">
         <h3>CAD Gallery</h3>
         <p>Explore a selection of my CAD designs created in OnShape and SolidWorks.</p>
         <div class="card-hint">Learn more →</div>
       </div>
-    </div>
+    </a>
 
     <a href="robot-arm.html" class="project-card fade-up">
       <img src="https://static.wixstatic.com/media/7ddc47_a0b262a95ca3408aa5bb52316d570a32~mv2.png/v1/crop/x_0,y_16,w_676,h_676/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="Robot Arm" class="project-img" />
@@ -167,173 +167,27 @@
       </div>
     </a>
 
-    <div class="project-card fade-up" onclick="openModal('turbine')">
+    <a href="drone.html" class="project-card fade-up">
       <img src="https://static.wixstatic.com/media/7ddc47_1e5b961a752f446eac04a26a0ae1c03f~mv2.png/v1/crop/x_3,y_0,w_496,h_496/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/windturbine_edited.png" alt="Wind Turbine" class="project-img" />
       <div class="project-body">
         <h3>Wind Turbine</h3>
         <p>Wind turbine project for an engineering class.</p>
         <div class="card-hint">Learn more →</div>
       </div>
-    </div>
+    </a>
 
-    <div class="project-card fade-up" onclick="openModal('drone')">
+    <a href="drone.html" class="project-card fade-up">
       <img src="https://static.wixstatic.com/media/7ddc47_d896a84204da4933afd29eca02464f56~mv2.jpg/v1/crop/x_0,y_201,w_2250,h_2250/fill/w_365,h_365,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5156_edited_edited.jpg" alt="Drone" class="project-img" />
       <div class="project-body">
         <h3>Drone Building</h3>
         <p>High school capstone: designed, built, and flew a custom 3D-printed drone.</p>
         <div class="card-hint">Learn more →</div>
       </div>
-    </div>
+    </a>
 
   </div>
 </main>
 
-<!-- MODAL: CAD -->
-<div class="modal-overlay" id="modal-cad" onclick="closeOnOverlay(event,'cad')">
-  <div class="modal-wrapper">
-    <button class="modal-close" onclick="closeModal('cad')">✕</button>
-    <div class="modal">
-      <img src="https://static.wixstatic.com/media/7ddc47_b4aa54bfc27e4115a41ed57d2002e149~mv2.png/v1/crop/x_157,y_0,w_682,h_682/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="CAD Gallery" class="modal-img" />
-      <div class="modal-body">
-        <div class="modal-tags">
-          <span class="modal-tag">OnShape</span><span class="modal-tag">SolidWorks</span><span class="modal-tag">GD&T</span>
-        </div>
-        <h2>CAD Gallery</h2>
-        <p>A collection of 3D models and technical drawings created throughout my coursework and personal projects using OnShape and SolidWorks.</p>
-        <p>These designs demonstrate my ability to translate engineering requirements into precise, manufacturable geometry — including proper tolerancing, mate constraints, and assembly modeling.</p>
-        <div class="modal-details">
-          <div class="modal-detail-row"><span class="modal-detail-label">Tools</span><span class="modal-detail-val">OnShape, SolidWorks</span></div>
-          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Part modeling, assemblies, technical drawings, GD&T</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- MODAL: Robot Arm -->
-<div class="modal-overlay" id="modal-arm" onclick="closeOnOverlay(event,'arm')">
-  <div class="modal-wrapper">
-    <button class="modal-close" onclick="closeModal('arm')">✕</button>
-    <div class="modal">
-
-      <!-- HERO IMAGE -->
-      <img src="../images/Image_edited.jpg" alt="Robot Arm Hero" class="modal-img" />
-
-      <div class="modal-body">
-
-        <!-- TAGS -->
-        <div class="modal-tags">
-          <span class="modal-tag">Robotics</span>
-          <span class="modal-tag">OnShape</span>
-          <span class="modal-tag">Arduino</span>
-          <span class="modal-tag">C++</span>
-          <span class="modal-tag">3D Printing</span>
-          <span class="modal-tag">Inverse Kinematics</span>
-          <span class="modal-tag">GD&T</span>
-        </div>
-
-        <!-- TITLE + OVERVIEW -->
-        <h2>Robot Arm</h2>
-        <p><!-- Write a 2-3 sentence overview of the project here --></p>
-
-        <!-- SECTION 1 -->
-        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
-          <h4 style="font-size:14px; font-weight:700; color:var(--dark); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Design & CAD</h4>
-          <p style="color:var(--mid); font-size:14px; line-height:1.8;"><!-- Describe your CAD process, software used, any design decisions --></p>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
-            <img src="../images/Image_edited.jpg" alt="CAD screenshot" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-            <img src="../images/Image_edited.jpg" alt="CAD detail" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-          </div>
-        </div>
-
-        <!-- SECTION 2 -->
-        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
-          <h4 style="font-size:14px; font-weight:700; color:var(--dark); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Fabrication & Assembly</h4>
-          <p style="color:var(--mid); font-size:14px; line-height:1.8;"><!-- Describe 3D printing process, assembly, any challenges --></p>
-          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:14px;">
-            <img src="" alt="Print 1" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-            <img src="" alt="Print 2" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-            <img src="" alt="Assembly" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-          </div>
-        </div>
-
-        <!-- SECTION 3 -->
-        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
-          <h4 style="font-size:14px; font-weight:700; color:var(--dark); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Programming & Controls</h4>
-          <p style="color:var(--mid); font-size:14px; line-height:1.8;"><!-- Describe Arduino code, inverse kinematics, any challenges --></p>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
-            <img src="" alt="Electronics" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-            <img src="" alt="Wiring" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-          </div>
-        </div>
-
-        <!-- SECTION 4 -->
-        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
-          <h4 style="font-size:14px; font-weight:700; color:var(--dark); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em;">Results & Takeaways</h4>
-          <p style="color:var(--mid); font-size:14px; line-height:1.8;"><!-- What worked, what you'd do differently, what you learned --></p>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;">
-            <img src="" alt="Final result 1" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-            <img src="" alt="Final result 2" style="width:100%; border-radius:5px; border:1px solid var(--border); object-fit:cover;" />
-          </div>
-        </div>
-
-        <!-- PROJECT DETAILS -->
-        <div class="modal-details">
-          <div class="modal-detail-row"><span class="modal-detail-label">Timeline</span><span class="modal-detail-val">Summer 2025</span></div>
-          <div class="modal-detail-row"><span class="modal-detail-label">Tools</span><span class="modal-detail-val">OnShape, Arduino, 3D Printer, C++</span></div>
-          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Mechanical design, fabrication, embedded programming, GD&T, Inverse Kinematics</span></div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: Wind Turbine -->
-<div class="modal-overlay" id="modal-turbine" onclick="closeOnOverlay(event,'turbine')">
-  <div class="modal-wrapper">
-    <button class="modal-close" onclick="closeModal('turbine')">✕</button>
-    <div class="modal">
-      <img src="https://static.wixstatic.com/media/7ddc47_1e5b961a752f446eac04a26a0ae1c03f~mv2.png/v1/crop/x_3,y_0,w_496,h_496/fill/w_365,h_365,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/windturbine_edited.png" alt="Wind Turbine" class="modal-img" />
-      <div class="modal-body">
-        <div class="modal-tags">
-          <span class="modal-tag">Fluid Mechanics</span><span class="modal-tag">CAD</span><span class="modal-tag">3D Printing</span>
-        </div>
-        <h2>Wind Turbine</h2>
-        <p>An engineering class project focused on designing and building a small-scale wind turbine optimized for power output.</p>
-        <p>The project covered blade geometry and aerodynamic profiling, rotor assembly, and testing under controlled airflow conditions. I applied principles from fluid mechanics to iterate on blade design and maximize efficiency.</p>
-        <div class="modal-details">
-          <div class="modal-detail-row"><span class="modal-detail-label">Context</span><span class="modal-detail-val">Engineering coursework, UConn</span></div>
-          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Aerodynamic design, CAD modeling, fabrication, testing</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: Drone -->
-<div class="modal-overlay" id="modal-drone" onclick="closeOnOverlay(event,'drone')">
-  <div class="modal-wrapper">
-    <button class="modal-close" onclick="closeModal('drone')">✕</button>
-    <div class="modal">
-      <img src="https://static.wixstatic.com/media/7ddc47_d896a84204da4933afd29eca02464f56~mv2.jpg/v1/crop/x_0,y_201,w_2250,h_2250/fill/w_365,h_365,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5156_edited_edited.jpg" alt="Drone" class="modal-img" />
-      <div class="modal-body">
-        <div class="modal-tags">
-          <span class="modal-tag">UAV</span><span class="modal-tag">3D Printing</span><span class="modal-tag">Electronics</span><span class="modal-tag">Flight Systems</span>
-        </div>
-        <h2>Drone Building</h2>
-        <p>My high school senior capstone project: I designed, fabricated, and successfully flew a custom 3D-printed drone entirely from scratch.</p>
-        <p>The frame was modeled in CAD and printed in PLA, with careful attention to weight distribution and motor mount geometry. I sourced and integrated the flight controller, ESCs, motors, and receiver, then tuned PID parameters for stable flight.</p>
-        <p>This was my first end-to-end hardware project and the experience that pushed me toward mechanical engineering.</p>
-        <div class="modal-details">
-          <div class="modal-detail-row"><span class="modal-detail-label">Context</span><span class="modal-detail-val">Senior capstone, Newtown High School</span></div>
-          <div class="modal-detail-row"><span class="modal-detail-label">Skills</span><span class="modal-detail-val">Airframe design, 3D printing, electronics integration, PID tuning</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <footer>
   <p>© 2026 Jared Ku · Mechanical Engineering Student, University of Connecticut</p>
