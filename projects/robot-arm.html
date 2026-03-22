@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robot Arm — Jared Ku</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+
+    /* ── HERO ── */
+    .project-hero {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      background: var(--border);
+      /* swap out with: background: url('../images/YOUR-HERO-IMAGE.jpg') center/cover no-repeat; */
+      position: relative;
+    }
+
+    .project-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── HEADER ── */
+    .proj-header {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .proj-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .proj-header .subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .proj-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .proj-meta-item strong {
+      color: var(--dark);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 56px;
+    }
+
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── SECTIONS ── */
+    .proj-section {
+      margin-bottom: 72px;
+    }
+
+    .proj-section-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-family: var(--mono);
+    }
+
+    .proj-section h2 {
+      font-family: var(--serif);
+      font-size: 32px;
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    .proj-section p {
+      color: var(--mid);
+      font-size: 15px;
+      line-height: 1.9;
+      max-width: 720px;
+      margin-bottom: 14px;
+    }
+
+    /* ── PHOTO LAYOUTS ── */
+    .photo-single img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-top: 24px;
+      display: block;
+      background: var(--border);
+      min-height: 200px;
+    }
+
+    .photo-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .photo-three {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .photo-two img,
+    .photo-three img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      display: block;
+      background: var(--border);
+    }
+
+    /* placeholder styling when src is empty */
+    img:not([src]), img[src=""] {
+      background: var(--border);
+      min-height: 160px;
+    }
+
+    /* ── SIDE BY SIDE (text + image) ── */
+    .proj-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 24px;
+    }
+
+    .proj-split img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      display: block;
+      background: var(--border);
+      min-height: 240px;
+    }
+
+    .proj-split p {
+      max-width: 100%;
+    }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      border-radius: 0 6px 6px 0;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.8;
+      max-width: 720px;
+    }
+
+    /* ── TAKEAWAYS LIST ── */
+    .takeaways {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 720px;
+      margin-top: 16px;
+    }
+
+    .takeaways li {
+      display: flex;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    .takeaways li::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 11px;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .proj-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 72px;
+    }
+
+    @media (max-width: 700px) {
+      .photo-two, .photo-three, .proj-split { grid-template-columns: 1fr; }
+      .project-hero { height: 260px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Jared Ku</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="index.html" class="active">Projects</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../contact/index.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO IMAGE ── -->
+<div class="project-hero">
+  <img src="../images/" alt="Robot Arm" />
+  <!-- Put your best photo filename after images/ above -->
+</div>
+
+<main class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="proj-header">
+    <a href="index.html" class="back-link">← Back to Projects</a>
+    <h1>Robot Arm</h1>
+    <p class="subtitle">
+      <!-- One or two sentences summarizing the project. What did you build and why? -->
+    </p>
+    <div class="proj-meta">
+      <div class="proj-meta-item"><strong>Timeline</strong>Summer 2025</div>
+      <div class="proj-meta-item"><strong>Tools</strong>OnShape, Arduino, C++, 3D Printer</div>
+      <div class="proj-meta-item"><strong>Type</strong>Personal Project</div>
+    </div>
+  </div>
+
+  <!-- ── TAGS ── -->
+  <div class="tags">
+    <span class="tag">Robotics</span>
+    <span class="tag">OnShape</span>
+    <span class="tag">Arduino</span>
+    <span class="tag">C++</span>
+    <span class="tag">3D Printing</span>
+    <span class="tag">Inverse Kinematics</span>
+    <span class="tag">GD&T</span>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 1 — OVERVIEW / MOTIVATION
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">01 — Overview</div>
+    <h2>Why I Built This</h2>
+    <p><!-- What motivated you to start this project? What did you want to learn? --></p>
+    <p><!-- Any background context — prior robotics experience, goals going in --></p>
+
+    <div class="photo-single">
+      <img src="../images/" alt="Project overview photo" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 2 — DESIGN & CAD
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">02 — Design & CAD</div>
+    <h2>Designing the Arm</h2>
+    <p><!-- Describe your design process. How did you approach the CAD modeling? --></p>
+    <p><!-- Any key design decisions — joint types, degrees of freedom, materials --></p>
+
+    <div class="callout">
+      <!-- Highlight a specific design challenge or insight here. E.g. "A key constraint was fitting all servo mounts within the 200mm reach envelope while keeping the wiring accessible." -->
+    </div>
+
+    <div class="photo-two">
+      <img src="../images/" alt="CAD model front view" />
+      <img src="../images/" alt="CAD model detail" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 — FABRICATION
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">03 — Fabrication</div>
+    <h2>3D Printing & Assembly</h2>
+
+    <div class="proj-split">
+      <div>
+        <p><!-- Describe the printing process — what printer, settings, material --></p>
+        <p><!-- Any tolerancing challenges, failed prints, or iterations --></p>
+      </div>
+      <img src="../images/" alt="Printed parts" />
+    </div>
+
+    <div class="photo-three">
+      <img src="../images/" alt="Fabrication photo 1" />
+      <img src="../images/" alt="Fabrication photo 2" />
+      <img src="../images/" alt="Fabrication photo 3" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 4 — ELECTRONICS & PROGRAMMING
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">04 — Electronics & Programming</div>
+    <h2>Controls & Code</h2>
+    <p><!-- Describe the electronics setup — servos, Arduino, power supply --></p>
+    <p><!-- Describe the programming — how did you control the joints? Inverse kinematics approach? --></p>
+
+    <div class="photo-two">
+      <img src="../images/" alt="Electronics / wiring" />
+      <img src="../images/" alt="Arduino setup" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 5 — RESULTS & TAKEAWAYS
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">05 — Results</div>
+    <h2>What I Learned</h2>
+    <p><!-- Describe the final result — what could the arm do? --></p>
+
+    <div class="photo-two">
+      <img src="../images/" alt="Final arm photo 1" />
+      <img src="../images/" alt="Final arm photo 2" />
+    </div>
+
+    <ul class="takeaways">
+      <li><!-- Key takeaway 1 --></li>
+      <li><!-- Key takeaway 2 --></li>
+      <li><!-- Key takeaway 3 --></li>
+      <li><!-- What you'd do differently in a next iteration --></li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Jared Ku · Mechanical Engineering Student, University of Connecticut</p>
+</footer>
+
+</body>
+</html>
