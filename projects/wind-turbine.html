@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wind Turbine — Jared Ku</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .project-hero { width:100%; height:420px; object-fit:cover; display:block; background:var(--border); }
+    .project-hero img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    .proj-header { padding:48px 0 36px; border-bottom:1px solid var(--border); margin-bottom:56px; }
+    .back-link { display:inline-flex; align-items:center; gap:6px; font-size:13px; color:var(--accent); text-decoration:none; font-weight:600; margin-bottom:28px; }
+    .back-link:hover { text-decoration:underline; }
+    .proj-header h1 { font-family:var(--serif); font-size:clamp(40px,6vw,64px); line-height:1.05; margin-bottom:16px; }
+    .proj-header .subtitle { font-size:16px; color:var(--muted); max-width:640px; line-height:1.8; margin-bottom:24px; }
+    .proj-meta { display:flex; flex-wrap:wrap; gap:24px; font-size:13px; color:var(--muted); }
+    .proj-meta-item strong { color:var(--dark); font-weight:700; display:block; margin-bottom:2px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+
+    .tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:56px; }
+    .tag { background:var(--accent-light); color:var(--accent); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:4px 12px; border-radius:20px; }
+
+    .proj-section { margin-bottom:72px; }
+    .proj-section-label { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:10px; font-family:var(--mono); }
+    .proj-section h2 { font-family:var(--serif); font-size:32px; margin-bottom:20px; line-height:1.15; }
+    .proj-section p { color:var(--mid); font-size:15px; line-height:1.9; max-width:720px; margin-bottom:14px; }
+
+    .photo-single img { width:100%; max-height:500px; object-fit:cover; border-radius:8px; border:1px solid var(--border); margin-top:24px; display:block; background:var(--border); min-height:200px; }
+    .photo-two { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:24px; }
+    .photo-three { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:24px; }
+    .photo-two img, .photo-three img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; border:1px solid var(--border); display:block; background:var(--border); }
+
+    .proj-split { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-top:24px; }
+    .proj-split img { width:100%; border-radius:8px; border:1px solid var(--border); object-fit:cover; display:block; background:var(--border); min-height:240px; }
+    .proj-split p { max-width:100%; }
+
+    .callout { background:var(--accent-light); border-left:3px solid var(--accent); padding:20px 24px; border-radius:0 6px 6px 0; margin:24px 0; font-size:14px; color:var(--mid); line-height:1.8; max-width:720px; }
+
+    .takeaways { list-style:none; display:flex; flex-direction:column; gap:12px; max-width:720px; margin-top:16px; }
+    .takeaways li { display:flex; gap:12px; font-size:15px; color:var(--mid); line-height:1.7; }
+    .takeaways li::before { content:'▸'; color:var(--accent); font-size:11px; margin-top:5px; flex-shrink:0; }
+
+    .stat-row { display:flex; flex-wrap:wrap; gap:32px; margin:28px 0; }
+    .stat-item { display:flex; flex-direction:column; gap:4px; }
+    .stat-value { font-family:var(--mono); font-size:28px; font-weight:600; color:var(--accent); }
+    .stat-label { font-size:12px; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+
+    .proj-divider { border:none; border-top:1px solid var(--border); margin:0 0 72px; }
+
+    @media (max-width:700px) {
+      .photo-two, .photo-three, .proj-split { grid-template-columns:1fr; }
+      .project-hero { height:260px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Jared Ku</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="index.html" class="active">Projects</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../contact/index.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO IMAGE ── -->
+<div class="project-hero">
+  <img src="../images/" alt="Wind Turbine" />
+  <!-- Put your best turbine photo filename after images/ above -->
+</div>
+
+<main class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="proj-header">
+    <a href="index.html" class="back-link">← Back to Projects</a>
+    <h1>Wind Turbine</h1>
+    <p class="subtitle">
+      <!-- One or two sentences summarizing the project. What did you build and for what purpose? -->
+    </p>
+    <div class="proj-meta">
+      <div class="proj-meta-item"><strong>Timeline</strong>Freshman Year, UConn</div>
+      <div class="proj-meta-item"><strong>Team</strong>Multidisciplinary Engineering Team</div>
+      <div class="proj-meta-item"><strong>Tools</strong>CAD, 3D Printer, Microcontroller</div>
+      <div class="proj-meta-item"><strong>Type</strong>Class Project</div>
+    </div>
+  </div>
+
+  <!-- ── TAGS ── -->
+  <div class="tags">
+    <span class="tag">Fluid Mechanics</span>
+    <span class="tag">CAD</span>
+    <span class="tag">3D Printing</span>
+    <span class="tag">VAWT</span>
+    <span class="tag">Prototyping</span>
+    <span class="tag">Teamwork</span>
+    <span class="tag">Microcontroller</span>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 1 — OVERVIEW
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">01 — Overview</div>
+    <h2>The Mission</h2>
+    <p><!-- Describe the project brief — designing a turbine for a mock Mars colony, constraints given (under 9 inches tall, small motor, limited materials) --></p>
+    <p><!-- Describe the team composition — mechanical, civil, electrical engineers --></p>
+
+    <div class="photo-single">
+      <img src="../images/" alt="Finished turbine" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 2 — CONCEPT & PROBLEM DEFINITION
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">02 — Concept & Problem Definition</div>
+    <h2>Understanding the Challenge</h2>
+    <p><!-- Describe the Mars colony context — unpredictable weather, dust storms, harsh conditions --></p>
+    <p><!-- How did you use a Gantt chart and weekly meetings to stay on track? --></p>
+
+    <div class="callout">
+      <!-- Key constraint or insight from the problem definition phase. E.g. "Mars wind is multidirectional and unpredictable, which ruled out a traditional horizontal axis turbine early on — we needed a design that could capture wind from any direction." -->
+    </div>
+
+    <div class="photo-single">
+      <img src="../images/" alt="Gantt chart or planning document" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 — PROTOTYPING
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">03 — Prototyping</div>
+    <h2>From HAWT to VAWT</h2>
+    <p><!-- Describe the original horizontal axis design and why you moved away from it --></p>
+    <p><!-- Explain the VAWT decision — omnidirectional wind capture, lower center of gravity, stability at small scale --></p>
+
+    <div class="proj-split">
+      <div>
+        <p><!-- Describe the cardboard prototype — what was its purpose, what did you learn from it? --></p>
+        <p><!-- Key design choices even in the rough model — airfoil blades, sturdy base --></p>
+      </div>
+      <img src="../images/" alt="Cardboard prototype" />
+    </div>
+
+    <div class="photo-two">
+      <img src="../images/" alt="Early prototype 1" />
+      <img src="../images/" alt="Early prototype 2" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 4 — DESIGN & MODELING
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">04 — Design & Modeling</div>
+    <h2>CAD & Modular Design</h2>
+    <p><!-- Describe the CAD process — who modeled what, software used --></p>
+    <p><!-- Explain the modular design decision — printability, interface design between parts --></p>
+
+    <div class="callout">
+      <!-- Highlight the modular design insight. E.g. "A modular approach forced us to carefully design every mating interface — which ultimately made assembly faster and allowed us to swap blade angles during testing without disassembling the whole unit." -->
+    </div>
+
+    <div class="photo-three">
+      <img src="../images/" alt="CAD full assembly" />
+      <img src="../images/" alt="CAD blade detail" />
+      <img src="../images/" alt="CAD base detail" />
+    </div>
+
+    <div class="photo-two" style="margin-top:14px;">
+      <img src="../images/" alt="CAD screenshot 1" />
+      <img src="../images/" alt="Electrical layout" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 5 — MANUFACTURING & ASSEMBLY
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">05 — Manufacturing & Assembly</div>
+    <h2>Printing & Putting It Together</h2>
+    <p><!-- Describe learning slicing software, print orientation and configuration --></p>
+    <p><!-- Describe the snap-fit blade mechanism and wooden dowel shaft --></p>
+
+    <div class="proj-split">
+      <div>
+        <p><!-- How did the snap-fit design work? What advantage did it give during testing? --></p>
+      </div>
+      <img src="../images/" alt="Assembly in progress" />
+    </div>
+
+    <div class="photo-two">
+      <img src="../images/" alt="Printed parts" />
+      <img src="../images/" alt="Final assembled turbine" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 6 — TESTING & RESULTS
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">06 — Testing & Results</div>
+    <h2>Validation & Performance</h2>
+    <p><!-- Describe the testing setup — blow dryer simulating wind, resistor measurement method --></p>
+
+    <!-- Key numbers -->
+    <div class="stat-row">
+      <div class="stat-item">
+        <span class="stat-value">1.29 μW</span>
+        <span class="stat-label">Peak Power Output</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">0.2 μW</span>
+        <span class="stat-label">LED Activation Threshold</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">20 kΩ</span>
+        <span class="stat-label">Measurement Resistor</span>
+      </div>
+    </div>
+
+    <p><!-- Describe the LED power indicator and what it demonstrated --></p>
+    <p><!-- Describe the project expo and integration into the mock colony --></p>
+
+    <div class="photo-two">
+      <img src="../images/" alt="Testing setup" />
+      <img src="../images/" alt="Expo or final presentation" />
+    </div>
+  </div>
+
+  <hr class="proj-divider" />
+
+  <!-- ══════════════════════════════════════
+       SECTION 7 — TAKEAWAYS
+  ══════════════════════════════════════ -->
+  <div class="proj-section">
+    <div class="proj-section-label">07 — Takeaways</div>
+    <h2>What I Learned</h2>
+    <p><!-- Brief reflection on the project --></p>
+
+    <ul class="takeaways">
+      <li><!-- Lesson about cross-disciplinary teamwork --></li>
+      <li><!-- Lesson about design iteration and prototyping --></li>
+      <li><!-- Lesson about modular design and manufacturability --></li>
+      <li><!-- Anything you'd do differently --></li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Jared Ku · Mechanical Engineering Student, University of Connecticut</p>
+</footer>
+
+</body>
+</html>
