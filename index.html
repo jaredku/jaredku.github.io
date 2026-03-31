@@ -41,7 +41,151 @@
     </ul>
   </div>
 </nav>
+<div style="background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 0; overflow: hidden; position: relative; height: 80px;">
+  <pre id="horse" style="font-family: var(--mono); font-size: 13px; color: var(--accent); position: absolute; white-space: pre; line-height: 1.2;"></pre>
+</div>
 
+<script>
+  const frames = [
+    `  \\
+   (o>
+  /|  )
+   |_/`,
+    `  \\
+   (o>
+  /|  )
+  _|`,
+    `   \\
+   (o>
+ /|   )
+  |_/`,
+    `  \\
+  (o>
+ /|  )
+  |__`
+  ];
+
+  const horse1 = [
+`   ,
+  /|      /\\
+ / |    /  \\  __
+|  |__/      \/  |
+|           /    |
+ \\         /    /
+  \\_______/____/`,
+
+`   ,
+  /|    __/\\
+ / |   /    \\
+|  |__/      |
+|      \\    /|
+ \\      \\__/ |
+  \\_______\\__/`,
+
+`   ,
+  /|   /\\
+ / |  /  \\__
+|  |_/      \\
+|    \\      /
+ \\    \\____/
+  \\________/`,
+  ];
+
+  const runner = [
+`      ___
+     /   \\__
+    /   (  o)
+   /|    '--'
+  / |   /|
+    |  / |
+    |_/  |_`,
+
+`      ___
+     /   \\__
+    /   (  o)
+   /     '--'
+  / \\   /|
+    |\ / |
+    | X  |_`,
+
+`      ___
+     /   \\__
+    /   (  o)
+   /|    '--'
+  /  \\  /|
+    | \/ |
+    |_/  |_`,
+  ];
+
+  const horse = [
+`        \\  /
+     ___(\\ /)
+    /      v
+   /  /~~\\  \\
+  / /      \\ \\
+ /_/  /\\  /\\ \\_
+    _/  \\/  \\_`,
+
+`        \\  /
+     ___(  )
+    /     v
+   /  /~~\\ |
+  / /      \\|
+ /_/ /\\  /\\
+   _/  \\/  \\_`,
+
+`        \\  /
+     ___(\\/)
+    /     v
+   /  /~~\\/
+  / /      \\
+ /_/ /\\  /\\ \\
+   _/  \\/  \\_`,
+  ];
+
+  let x = window.innerWidth;
+  let frame = 0;
+  const el = document.getElementById('horse');
+  const speed = 3;
+
+  const HORSE = [
+`  .,
+ /|  '-.
+/ |    o)
+| |---'
+|      \\
+ \\      \\__
+  '-.____.>`,
+
+`  .,
+ /|  '-.
+/ |    o)
+| |---'
+|    \\
+ \\    \\__,
+  '-._/`,
+
+`  .,
+ /|  '-.
+/ |    o)
+| |--'
+|      \\
+ \\      '--,
+  '-.___/`,
+  ];
+
+  function animate() {
+    el.textContent = HORSE[frame % HORSE.length];
+    el.style.left = x + 'px';
+    x -= speed;
+    const width = el.offsetWidth;
+    if (x < -width - 20) x = window.innerWidth + 20;
+    frame++;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
 <main class="page">
 
   <!-- HERO -->
