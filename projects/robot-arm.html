@@ -325,8 +325,17 @@
   <div class="proj-section">
     <div class="proj-section-label">02 — Design & CAD</div>
     <h2>Designing the Arm</h2>
-    <p><!-- Describe your design process. How did you approach the CAD modeling? --></p>
-    <p><!-- Any key design decisions — joint types, degrees of freedom, materials --></p>
+I initially planned to use cheap servo motors, but quick torque calculations showed they wouldn't be strong enough for the size of the 
+    arm I wanted to build. Instead of shrinking the design to accommodate weak servos, I decided to challenge myself. I traded off cost 
+    for precision by upgrading to stepper motors with custom gear reductions, which gave me vastly more control over the mechanical design
+    of the joints.
+    </p>
+    <p><!-- Any key design decisions — joint types, degrees of freedom, materials -->
+The final design uses an eccentrically cycloidal drive for the base, and standard cycloidal drives for the shoulder and elbow joints 
+      with 15:1 and 20:1 gear reductions, respectively. I chose cycloidal drives because they are highly compact, provide excellent torque, and 
+      have almost zero backlash when manufactured with proper tolerances. To ensure the gearboxes ran smoothly, I integrated various mechanical 
+      bearings and applied PTFE grease to minimize internal friction.
+    </p>
 
     <div class="callout">
       <!-- Highlight a specific design challenge or insight here. E.g. "A key constraint was fitting all servo mounts within the 200mm reach envelope while keeping the wiring accessible." -->
@@ -335,7 +344,6 @@
     <div class="photo-two">
       <img src="../images/arm/fullmodel.png" alt="CAD model front view" style="object-fit:contain;"/>
       <img src="../images/" alt="CAD model detail" />
-    </div>
   </div>
 
   <hr class="proj-divider" />
