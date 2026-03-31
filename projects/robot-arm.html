@@ -370,8 +370,14 @@
   <div class="proj-section">
     <div class="proj-section-label">04 — Electronics & Programming</div>
     <h2>Controls & Code</h2>
-    <p><!-- Describe the electronics setup — servos, Arduino, power supply --></p>
-    <p><!-- Describe the programming — how did you control the joints? Inverse kinematics approach? --></p>
+    <p>The three stepper motors are connected to 3 TB6600 stepper drivers which are connected to an arduino. The drivers are powered by a 
+        variable power supply. In the future, I'd like to clean up the wirring using a breadboard.
+    </p>
+    <p>
+      To get it moving, I started by simply hardcoding the rotations to test the arm's physical limits. 
+      After figuring out how it moved, I wrote the math for inverse kinematics into the code so I could actually control exactly where the arm reaches 
+      
+    </p>
 
     <div class="photo-two">
       <img src="../images/" alt="Electronics / wiring" />
@@ -394,16 +400,11 @@
       <img src="../images/arm/print6.jpg" alt="Final arm photo 2" style="object-fit:contain;"/>
       
     </div>
-    <div>
-    <video width="100%" autoplay loop muted playsinline>
-  <source src="../images/arm/arm.mp4" type="video/mp4">
-</video>
-  </div>
     <ul class="takeaways">
-      <li><!-- Key takeaway 1 --></li>
-      <li><!-- Key takeaway 2 --></li>
-      <li><!-- Key takeaway 3 --></li>
-      <li><!-- What you'd do differently in a next iteration --></li>
+      <li>Accounting for printer tolerances and manufacturing methods</li>
+      <li>Hand calcs and first-principles thinking can eliminate ideas quickly and saves time</li>
+      <li>Learned to view mechatronic systems as the integration of mechanical, electrical, and software design decisions</li>
+      <li>If I were to do it again, I would implement encoders for closed-loop feedback, allowing the arm to verify its exact physical position</li>
     </ul>
   </div>
 
