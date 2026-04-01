@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAD Gallery — Jared Ku</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .proj-header { padding:48px 0 36px; border-bottom:1px solid var(--border); margin-bottom:48px; }
+    .back-link { display:inline-flex; align-items:center; gap:6px; font-size:13px; color:var(--accent); text-decoration:none; font-weight:600; margin-bottom:28px; }
+    .back-link:hover { text-decoration:underline; }
+    .proj-header h1 { font-family:var(--serif); font-size:clamp(40px,6vw,64px); line-height:1.05; margin-bottom:12px; }
+    .proj-header p { font-size:15px; color:var(--muted); max-width:560px; line-height:1.8; }
+
+    .tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:48px; }
+    .tag { background:var(--accent-light); color:var(--accent); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:4px 12px; border-radius:20px; }
+
+    /* Masonry-style grid */
+    .gallery {
+      columns: 3;
+      column-gap: 14px;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.03); }
+
+    .gallery-item-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 24px 12px 10px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .gallery-item:hover .gallery-item-label { opacity: 1; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px; right: 24px;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    .lightbox-label {
+      position: fixed;
+      bottom: 24px;
+      left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      font-family: var(--mono);
+    }
+
+    @media (max-width: 700px) {
+      .gallery { columns: 2; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Jared Ku</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="index.html" class="active">Projects</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../contact/index.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="proj-header">
+    <a href="index.html" class="back-link">← Back to Projects</a>
+    <h1>CAD Gallery</h1>
+    <p>A collection of 3D models and designs created in OnShape and SolidWorks. Click any image to expand.</p>
+  </div>
+
+  <div class="tags">
+    <span class="tag">OnShape</span>
+    <span class="tag">SolidWorks</span>
+    <span class="tag">3D Modeling</span>
+    <span class="tag">GD&T</span>
+  </div>
+
+  <div class="gallery">
+
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://static.wixstatic.com/media/7ddc47_b4aa54bfc27e4115a41ed57d2002e149~mv2.png/v1/fill/w_372,h_253,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="Four Cylinder Engine" />
+      <div class="gallery-item-label">Four Cylinder Engine</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://static.wixstatic.com/media/7ddc47_59992e67e3d44a9187fef0807d9899c3~mv2.png/v1/fill/w_255,h_209,q_90,enc_avif,quality_auto/7ddc47_59992e67e3d44a9187fef0807d9899c3~mv2.png" alt="CAD Design" />
+      <div class="gallery-item-label">CAD Design</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://static.wixstatic.com/media/7ddc47_bca14aed829644ff948f0e6dce48881b~mv2.png/v1/fill/w_462,h_286,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image.png" alt="Mechanical Clock Prototype" />
+      <div class="gallery-item-label">Mechanical Clock Prototype</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://static.wixstatic.com/media/7ddc47_23f92807f09d4953a527c5728ffde4ae~mv2.png/v1/fill/w_228,h_209,q_90,enc_avif,quality_auto/7ddc47_23f92807f09d4953a527c5728ffde4ae~mv2.png" alt="CAD Design" />
+      <div class="gallery-item-label">CAD Design</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://static.wixstatic.com/media/7ddc47_02ad25dbd8074b2386785f8a995f2f76~mv2.png/v1/fill/w_487,h_313,q_90,enc_avif,quality_auto/7ddc47_02ad25dbd8074b2386785f8a995f2f76~mv2.png" alt="CAD Design" />
+      <div class="gallery-item-label">CAD Design</div>
+    </div>
+
+    <!-- Add more images below — just copy a gallery-item block and update src and label -->
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="../images/" alt="" />
+      <div class="gallery-item-label"><!-- Label --></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="../images/" alt="" />
+      <div class="gallery-item-label"><!-- Label --></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="../images/" alt="" />
+      <div class="gallery-item-label"><!-- Label --></div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLight(event)">
+  <button class="lightbox-close" onclick="closeLightBtn()">✕</button>
+  <img id="lightbox-img" src="" alt="" />
+  <div class="lightbox-label" id="lightbox-label"></div>
+</div>
+
+<footer>
+  <p>© 2026 Jared Ku · Mechanical Engineering Student, University of Connecticut · <a href="https://linkedin.com/in/jaredku111" target="_blank" style="color:var(--accent);text-decoration:none;">LinkedIn</a></p>
+</footer>
+
+<script>
+  function openLight(el) {
+    const img = el.querySelector('img');
+    const label = el.querySelector('.gallery-item-label');
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-label').textContent = label.textContent;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLight(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightBtn();
+  }
+
+  function closeLightBtn() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightBtn();
+  });
+</script>
+
+</body>
+</html>
