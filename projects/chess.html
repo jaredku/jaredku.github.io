@@ -122,78 +122,62 @@
   <div class="thought-block">
     <div class="label">Thought Process</div>
     <p>
-      <!-- ✏️ Write your thought process here. What was the core idea? What engineering instinct drove it?
-           Example: "I play chess regularly and wanted to understand my own games better. As an ME student
-           I think in stress fields and force distributions — so I asked: what if I modeled board control
-           the same way I'd model a 2D stress field? Each piece exerts 'pressure' on the squares it attacks,
-           weighted by piece value, and the superposition of all those contributions gives you a scalar field
-           over the 8×8 board. String those fields together over a full game and you have a time-series
-           of tensors you can actually analyze." -->
       Replace this text with your own explanation of the idea, what engineering concept inspired it,
       and what you were trying to find out about your own games.
     </p>
   </div>
 
-  <!-- ── GALLERY ── -->
-  <!-- 
-    HOW TO ADD IMAGES:
-    1. Put your screenshots/plots in your images/chess/ folder
-    2. Replace src="" with the correct path, e.g. src="../images/chess/heatmap_opening.png"
-    3. Update the caption text below each image
-    4. Add or remove .gallery-item blocks as needed
-    5. Add class="full" to any item you want full-width (good for wide plots)
-  -->
+
   <div class="gallery">
 
     <!-- Image 1 -->
     <div class="gallery-item">
-      <img src="" alt="Screenshot 1" />
+      <img src="../images/chess/game1.png" alt="Screenshot 1" />
       <div class="caption-box">
         <div class="caption-label">01 — PGN Parser</div>
         <p class="caption-text">
-          <!-- e.g. "Reading a game from a PGN string using chess.pgn and io.StringIO. The loop steps through each ply and updates the board object." -->
-          Caption for your first image.
+            Pressure graphed over the course of a game. Positive is white pressure and negative is black presssure.
         </p>
       </div>
     </div>
 
     <!-- Image 2 -->
     <div class="gallery-item">
-      <img src="" alt="Screenshot 2" />
+      <img src="../images/chess/firstpress.png" alt="Screenshot 2" />
       <div class="caption-box">
         <div class="caption-label">02 — Attack Query</div>
         <p class="caption-text">
           <!-- e.g. "board.attacks(square) returns a SquareSet — a sparse boolean vector over all 64 nodes. Iterating and accumulating into NumPy is like assembling a global stiffness matrix." -->
-          Caption for your second image.
+          Initial heatmaps looked like this. I realized I needed to tune the pressure to more accurately capture the state of the board. See next
         </p>
       </div>
     </div>
 
     <!-- Image 3 -->
     <div class="gallery-item">
-      <img src="" alt="Screenshot 3" />
+      <img src="../images/chess/47.png" alt="Screenshot 3" />
       <div class="caption-box">
         <div class="caption-label">03 — Pressure Matrix</div>
         <p class="caption-text">
-          Caption for your third image.
+          Another example of a heatmap mid-game. I started applying weights to different squares. This is taken at ply 47
         </p>
       </div>
     </div>
 
     <!-- Image 4 -->
     <div class="gallery-item">
-      <img src="" alt="Screenshot 4" />
+      <img src="../images/chess/47board.png" alt="Screenshot 4" />
       <div class="caption-box">
         <div class="caption-label">04 — Heatmap Output</div>
         <p class="caption-text">
-          Caption for your fourth image.
+          To give an idea of what the board looks like compared to the heatmap, this is the same ply
         </p>
       </div>
     </div>
 
     <!-- Full-width image — good for a wide time-series plot or side-by-side comparison -->
     <div class="gallery-item full">
-      <img src="" alt="Wide result plot" />
+      <img src="../images/chess/stockfish.png" alt="Wide result plot" />
       <div class="caption-box">
         <div class="caption-label">05 — Full Game Pressure Evolution</div>
         <p class="caption-text">
