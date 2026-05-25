@@ -60,17 +60,33 @@
     }
     .thought-block p { font-size: 14px; color: var(--mid); line-height: 1.85; }
 
-    /* Gallery grid */
+/* Gallery grid */
 .gallery { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px; }
 
-/* half-width (2 across) — default */
 .gallery-item { grid-column: span 3; display: flex; flex-direction: column; gap: 0; }
 
-/* one-third width (3 across) */
+.gallery-item img {
+  width: 100%; aspect-ratio: 3/3; object-fit: contain;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  display: block;
+}
+
+.caption-box {
+  border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 14px 16px;
+}
+.caption-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+}
+.caption-text { font-size: 13px; color: var(--mid); line-height: 1.7; }
+
 .gallery-item.third { grid-column: span 2; }
 .gallery-item.third img { aspect-ratio: 1/1; }
 
-/* full-width */
 .gallery-item.full { grid-column: 1 / -1; }
 .gallery-item.full img { aspect-ratio: 16/6; }
 
@@ -248,25 +264,25 @@
 <div class="gallery-item third">
       <img src="../images/chess/anish_full.png"  />
       <div class="caption-box">
-        <div class="caption-label"> Jared game plotted</div>
+        <div class="caption-label"> Average across 300 games as white: Anish Giri</div>
         <p class="caption-text">
           
         </p>
       </div>
     </div>
 <div class="gallery-item third">
-      <img src="../images/chess/hikaru_full.png"  />
+      <img src="../images/chess/hikaru1_full.png"  />
       <div class="caption-box">
-        <div class="caption-label"> Jared game plotted</div>
+        <div class="caption-label"> Average across 300 games as white: Hikaru</div>
         <p class="caption-text">
           
         </p>
       </div>
     </div>
 <div class="gallery-item third">
-      <img src="../images/chess/jared_full.png"  />
+      <img src="../images/chess/jaredfull.png"  />
       <div class="caption-box">
-        <div class="caption-label"> Jared game plotted</div>
+        <div class="caption-label"> Average across 300 games as white: Jared</div>
         <p class="caption-text">
           
         </p>
@@ -278,7 +294,7 @@
 <div class="gallery-item third">
       <img src="../images/chess/magnus1_full.png"  />
       <div class="caption-box">
-        <div class="caption-label"> Jared game plotted</div>
+        <div class="caption-label"> Average across 300 games as white: Magnus</div>
         <p class="caption-text">
           
         </p>
@@ -287,16 +303,16 @@
 <div class="gallery-item third">
       <img src="../images/chess/msb2_full.png"  />
       <div class="caption-box">
-        <div class="caption-label"> Jared game plotted</div>
+        <div class="caption-label"> Average across 300 games as white: msb2</div>
         <p class="caption-text">
           
         </p>
       </div>
     </div>
 <div class="gallery-item third">
-      <img src="../images/chess/rapaole.png"  />
+      <img src="../images/chess/rapaole_full.png"  />
       <div class="caption-box">
-        <div class="caption-label"> Jared game plotted</div>
+        <div class="caption-label">Average across 300 games as white: Rapaole</div>
         <p class="caption-text">
           
         </p>
