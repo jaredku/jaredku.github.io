@@ -90,10 +90,11 @@
     .gallery-item.full { grid-column: 1 / -1; }
     .gallery-item.full img { aspect-ratio: 16/6; }
 
+    .gallery-item.small {}
+    .gallery-item.small img { width: 66%;}
     @media (max-width: 640px) {
       .gallery { grid-template-columns: 1fr; }
       .gallery-item.full img { aspect-ratio: 4/3; }
-      .gallery-item.small img { width: 66%}
     }
   </style>
 </head>
