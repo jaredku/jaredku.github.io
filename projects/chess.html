@@ -9,41 +9,6 @@
   <style>
 
     /* Section Dividers & Layout */
-main.page {
-  counter-reset: section-counter; /* Initializes the auto-numbering */
-}
-
-.section-divider {
-  counter-increment: section-counter;
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 72px auto 48px;
-  position: relative;
-  max-width: 760px; /* Aligns with your thought-block width */
-}
-
-.section-divider::after {
-  /* Automatically outputs 01, 02, 03, etc. */
-  content: "SECTION // 0" counter(section-counter); 
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: var(--muted);
-  background: #fff;
-  padding: 0 16px;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: 24px;
-  color: var(--dark);
-  margin-bottom: 24px;
-  max-width: 760px;
-}
     :root {
       --accent: #2563eb;
       --accent-light: #eff6ff;
@@ -235,9 +200,7 @@ main.page {
         </p>
       </div>
     </div>
-    
-<hr class="section-divider">
-<h2 class="section-title">2.</h2>
+
     
     <!-- Full-width image — good for a wide time-series plot or side-by-side comparison -->
     <div class="gallery-item full">
@@ -299,9 +262,6 @@ main.page {
         </p>
       </div>
     </div>
-
-    <hr class="section-divider">
-<h2 class="section-title">3.</h2>
     
 <div class="gallery-item third">
       <img src="../images/chess/anish_full.png"  />
