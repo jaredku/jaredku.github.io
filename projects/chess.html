@@ -97,57 +97,7 @@
   .gallery-item.full { grid-column: 1 / -1; }
   .gallery-item.full img { aspect-ratio: 4/3; }
 }
-    /* Lightbox */
-.gallery-item img { cursor: zoom-in; }
-
-#lightbox {
-  display: none; position: fixed; inset: 0; z-index: 999;
-  background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
-  align-items: center; justify-content: center;
-}
-#lightbox.open { display: flex; }
-#lightbox img {
-  max-width: 90vw; max-height: 90vh;
-  object-fit: contain; border-radius: 8px;
-  box-shadow: 0 25px 80px rgba(0,0,0,0.5);
-  border: none; background: none; aspect-ratio: unset;
-}
-#lightbox-close {
-  position: fixed; top: 20px; right: 28px;
-  font-size: 32px; color: #fff; cursor: pointer;
-  line-height: 1; background: none; border: none;
-  opacity: 0.7;
-}
-#lightbox-close:hover { opacity: 1; }
   </style>
-  <div id="lightbox">
-  <button id="lightbox-close">✕</button>
-  <img id="lightbox-img" src="" alt="" />
-</div>
-
-<script>
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightbox-img');
-
-  document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('click', () => {
-      lbImg.src = img.src;
-      lightbox.classList.add('open');
-    });
-  });
-
-  document.getElementById('lightbox-close').addEventListener('click', () => {
-    lightbox.classList.remove('open');
-  });
-
-  lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) lightbox.classList.remove('open');
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') lightbox.classList.remove('open');
-  });
-</script>
 </head>
 <body>
 
@@ -242,7 +192,7 @@
     <div class="gallery-item">
       <img src="../images/chess/andreyply15.png" alt="Screenshot 4" />
       <div class="caption-box">
-        <div class="caption-label">06 — Heatmap of previous board</div>
+        <div class="caption-label">06 — Heatmap of that cluttered mess</div>
         <p class="caption-text">
           This is from ply 15 from the same game above and the heatmap of the annotated board.
         </p>
