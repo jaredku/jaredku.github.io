@@ -240,7 +240,43 @@
       border-top: 1px solid var(--border);
       margin: 0 0 72px;
     }
+/* Gallery grid */
+.gallery { display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px; }
 
+.gallery-item { grid-column: span 3; display: flex; flex-direction: column; gap: 0; }
+
+.gallery-item img {
+  width: 100%; aspect-ratio: 3/3; object-fit: contain;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  display: block;
+}
+
+.caption-box {
+  border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 14px 16px;
+}
+.caption-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+}
+.caption-text { font-size: 13px; color: var(--mid); line-height: 1.7; }
+
+.gallery-item.third { grid-column: span 2; }
+.gallery-item.third img { aspect-ratio: 1/1; }
+
+.gallery-item.full { grid-column: 1 / -1; }
+.gallery-item.full img { aspect-ratio: 16/6; }
+
+@media (max-width: 640px) {
+  .gallery { grid-template-columns: 1fr; }
+  .gallery-item,
+  .gallery-item.third,
+  .gallery-item.full { grid-column: 1 / -1; }
+  .gallery-item.full img { aspect-ratio: 4/3; }
+}
     @media (max-width: 700px) {
       .photo-two, .photo-three, .proj-split { grid-template-columns: 1fr; }
       .project-hero { height: 260px; }
@@ -294,123 +330,74 @@
     <span class="tag">Statics & Dynamics</span>
   </div>
 
-  <!-- ══════════════════════════════════════
-       SECTION 1 — OVERVIEW / MOTIVATION
-  ══════════════════════════════════════ -->
-  <div class="proj-section">
-    <div class="proj-section-label">01 — Overview</div>
-        <div class="proj-split">
-          <div>
-      <h2>Why I Built This</h2>
-    <p>
-      The summer after my freshman year, I set out to build a 3-DOF robotic arm entirely from scratch, owning the mechanical design, electronics, and software. 
-      The project was self-initiated and self-funded, with a budget cap of $150 to keep the build realistic and force intentional design decisions.
-      The motivation came from a robotics class I took in high school using VEX, where I loved working through problems creatively with my team. 
-      I wanted to revisit that interest independently and see how far I could push it on my own.</p>
-    </p>
-            </div>
-  <video width="100%" autoplay loop muted playsinline>
-  <source src="../images/arm/arm.mp4" type="video/mp4">
-</video>
-            </div>
-    </div>
-  </div>
+  <div class="gallery">
 
-  <hr class="proj-divider" />
-
-  <!-- ══════════════════════════════════════
-       SECTION 2 — DESIGN & CAD
-  ══════════════════════════════════════ -->
-  <div class="proj-section">
-    <div class="proj-section-label">02 — Design & CAD</div>
-    <h2>Designing the Arm</h2>
-I initially planned to use cheap servo motors, but quick torque calculations showed they wouldn't be strong enough for the size of the 
-    arm I wanted to build. Instead of shrinking the design to accommodate weak servos, I decided to challenge myself. I traded off cost 
-    for precision by upgrading to stepper motors with custom gear reductions, which gave me vastly more control over the mechanical design
-    of the joints.
-    </p>
-    <p><!-- Any key design decisions — joint types, degrees of freedom, materials -->
-The final design uses an eccentrically cycloidal drive for the base, and standard cycloidal drives for the shoulder and elbow joints 
-      with 15:1 and 20:1 gear reductions, respectively. I chose cycloidal drives because they are highly compact, provide excellent torque, and 
-      have almost zero backlash when manufactured with proper tolerances. To ensure the gearboxes ran smoothly, I integrated various mechanical 
-      bearings and applied PTFE grease to minimize internal friction.
-    </p>
-
-    <div class="callout">
-      <!-- Highlight a specific design challenge or insight here. E.g. "A key constraint was fitting all servo mounts within the 200mm reach envelope while keeping the wiring accessible." -->
-    </div>
-
-    <div class="photo-two">
-      <img src="../images/arm/fullmodel.png" alt="CAD model front view" style="object-fit:contain;"/>
-      <img src="../images/" alt="CAD model detail" />
-  </div>
-
-  <hr class="proj-divider" />
-
-  <!-- ══════════════════════════════════════
-       SECTION 3 — FABRICATION
-  ══════════════════════════════════════ -->
-  <div class="proj-section">
-    <div class="proj-section-label">03 — Fabrication</div>
-    <h2>3D Printing & Assembly</h2>
-
-    <div class="proj-split">
-      <div>
-        <p><!-- Describe the printing process — what printer, settings, material --></p>
-        <p><!-- Any tolerancing challenges, failed prints, or iterations --></p>
+    <!-- Image 1 -->
+    <div class="gallery-item">
+      <img src="../images/chess/game1.png" alt="Screenshot 1" />
+      <div class="caption-box">
+        <div class="caption-label">01 — Momentum of a Match</div>
+        <p class="caption-text">
+            Pressure graphed over the course of a game. Positive is white pressure and negative is black presssure.
+        </p>
       </div>
-      <img src="../images/arm/printassemb.jpg" alt="Printed parts" />
     </div>
 
-    <div class="photo-three">
-      <img src="../images/arm/print2.jpg" alt="Fabrication photo 1" />
-      <img src="../images/arm/print4.jpg" alt="Fabrication photo 2" />
-      <img src="../images/arm/print5.jpg" alt="Fabrication photo 3" style="object-fit:contain;"/>
+    <!-- Image 2 -->
+    <div class="gallery-item">
+      <img src="../images/chess/firstpress.png" alt="Screenshot 2" />
+      <div class="caption-box">
+        <div class="caption-label">02 — First Heatmap</div>
+        <p class="caption-text">
+          <!-- e.g. "board.attacks(square) returns a SquareSet — a sparse boolean vector over all 64 nodes. Iterating and accumulating into NumPy is like assembling a global stiffness matrix." -->
+          Initial heatmaps looked like this. I realized I needed to tune the pressure to more accurately capture the state of the board. See next
+        </p>
+      </div>
     </div>
-  </div>
 
-  <hr class="proj-divider" />
-
-  <!-- ══════════════════════════════════════
-       SECTION 4 — ELECTRONICS & PROGRAMMING
-  ══════════════════════════════════════ -->
-  <div class="proj-section">
-    <div class="proj-section-label">04 — Electronics & Programming</div>
-    <h2>Controls & Code</h2>
-    <p>The three stepper motors are connected to 3 TB6600 stepper drivers which are connected to an arduino. The drivers are powered by a 
-        variable power supply. In the future, I'd like to clean up the wirring using a breadboard.
-    </p>
-    <p>
-      To get it moving, I started by simply hardcoding the rotations to test the arm's physical limits. 
-      After figuring out how it moved, I wrote the math for inverse kinematics into the code so I could actually control exactly where the arm reaches 
-      
-    </p>
-
-    <div class="photo-two">
-      <img src="../images/arm/print6.jpg" alt="Final arm photo 2" style="object-fit:contain;"/>
+    <!-- Image 3 -->
+    <div class="gallery-item">
+      <img src="../images/chess/47.png" alt="Screenshot 3" />
+      <div class="caption-box">
+        <div class="caption-label">03 — Improved Heatmap</div>
+        <p class="caption-text">
+          Another example of a heatmap mid-game. I started applying weights to different squares. This is taken at ply 47
+        </p>
+      </div>
     </div>
-  </div>
 
-  <hr class="proj-divider" />
+    <!-- Image 4 -->
+    <div class="gallery-item">
+      <img src="../images/chess/47board.png" alt="Screenshot 4" />
+      <div class="caption-box">
+        <div class="caption-label">04 — Chess Board Comparison</div>
+        <p class="caption-text">
+          To give an idea of what the board looks like compared to the heatmap, this is the same ply
+        </p>
+      </div>
+    </div>
+        <!-- Image 5 -->
+    <div class="gallery-item">
+      <img src="../images/chess/andreyply15b.png" alt="Screenshot 3" />
+      <div class="caption-box">
+        <div class="caption-label">05 — More visuals</div>
+        <p class="caption-text">
+          This is another visual of what I'm actually plotting, minus the weights that are applied.
+        </p>
+      </div>
+    </div>
 
-  <!-- ══════════════════════════════════════
-       SECTION 5 — RESULTS & TAKEAWAYS
-  ══════════════════════════════════════ -->
-  <div class="proj-section">
-    <div class="proj-section-label">05 — Results</div>
-    <h2>What I Learned</h2>
-    <p><!-- Describe the final result — what could the arm do? --></p>
+    <!-- Image 6 -->
+    <div class="gallery-item">
+      <img src="../images/chess/andreyply15.png" alt="Screenshot 4" />
+      <div class="caption-box">
+        <div class="caption-label">06 — Heatmap of that cluttered mess</div>
+        <p class="caption-text">
+          This is from ply 15 from the same game above and the heatmap of the annotated board.
+        </p>
+      </div>
+    </div>
 
-    <div class="photo-two">
-      <img src="../images/arm/Image (11).jpeg" alt="Final arm photo 1"/>
-      
-    <ul class="takeaways">
-      <li>Accounting for printer tolerances and manufacturing methods</li>
-      <li>Hand calcs and first-principles thinking can eliminate ideas quickly and saves time</li>
-      <li>Learned to view mechatronic systems as the integration of mechanical, electrical, and software design decisions</li>
-      <li>If I were to do it again, I would implement encoders for closed-loop feedback, allowing the arm to verify its exact physical position</li>
-    </ul>
-  </div>
 
 </main>
 
